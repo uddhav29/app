@@ -25,5 +25,5 @@ steps:
 
 
 substitutions:
-  _SERVER: 'my-gce-vm-server'
+  _SERVER: 'gke-hardcoders-cluster-default-pool-1de0d4dc-7w98'
   _ZONE: 'us-central1-a'
