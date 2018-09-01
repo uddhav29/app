@@ -24,6 +24,3 @@ steps:
   args: ['compute', 'ssh', '$_SERVER', '--zone', '$_ZONE',  '--command', 'docker run  --restart always --name github-uddhav29-simple-rest-app -d -p 8085:8085  --log-driver=gcplogs  gcr.io/kubernetes-test-214217/github-uddhav29-simple-rest-app:master']
 
 
-substitutions:
-  _SERVER: 'my-gce-vm-server'
-  _ZONE: 'us-east1-c'
