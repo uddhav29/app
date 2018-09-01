@@ -7,7 +7,23 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/kubernetes-test-214217/github-uddhav29-simple-rest-app:master']
 
- # Connect to server and start new container
+# Connect to GCE server and pull new image
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute', 'ssh', 'INSTANCE_NAME', '--', 'docker run -d -p 8085:8085 gcr.io/kubernetes-test-214217/github-uddhav29-simple-rest-app:master']
+  args: ['compute', 'ssh', '$_SERVER', '--zone', '$_ZONE', '--command', 'gcloud docker -- pull gcr.io/kubernetes-test-214217/github-uddhav29-simple-rest-app:master']
 
+# Connect to server and stop current container
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['compute', 'ssh', '$_SERVER', '--zone', '$_ZONE',  '--command', 'docker stop github-uddhav29-simple-rest-app']
+
+# Connect to server and stop current container
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['compute', 'ssh', '$_SERVER', '--zone', '$_ZONE',  '--command', 'docker rm github-uddhav29-simple-rest-app']
+
+  # Connect to server and start new container
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['compute', 'ssh', '$_SERVER', '--zone', '$_ZONE',  '--command', 'docker run  --restart always --name github-uddhav29-simple-rest-app -d -p 8085:8085  --log-driver=gcplogs  gcr.io/kubernetes-test-214217/github-uddhav29-simple-rest-app:master']
+
+
+substitutions:
+  _SERVER: 'my-gce-vm-server'
+  _ZONE: 'us-central1-a'
