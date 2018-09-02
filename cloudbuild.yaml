@@ -8,22 +8,12 @@ steps:
   args: ['push', 'gcr.io/kubernetes-test-214217/github-uddhav29-simple-rest-app:master']
 
 # Connect to GCE server and pull new image
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute','--project','kubernetes-test-214217', 'ssh','--zone', '$_ZONE','gke-hardcoders-cluster-default-pool-1de0d4dc-7w98', '--command', 'gcloud docker -- pull gcr.io/kubernetes-test-214217/github-uddhav29-simple-rest-app:master']
-
-# Connect to server and stop current container
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute', 'ssh', '$_SERVER', '--zone', '$_ZONE',  '--command', 'docker stop github-uddhav29-simple-rest-app']
-
-# Connect to server and stop current container
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute', 'ssh', '$_SERVER', '--zone', '$_ZONE',  '--command', 'docker rm github-uddhav29-simple-rest-app']
-
-  # Connect to server and start new container
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute', 'ssh', '$_SERVER', '--zone', '$_ZONE',  '--command', 'docker run  --restart always --name github-uddhav29-simple-rest-app -d -p 8085:8085  --log-driver=gcplogs  gcr.io/kubernetes-test-214217/github-uddhav29-simple-rest-app:master']
-
-
-substitutions:
-  _SERVER: 'gke-hardcoders-cluster-default-pool-1de0d4dc-7w98'
-  _ZONE: 'us-central1-a'
+  - name: 'gcr.io/cloud-builders/gsutil'
+      args: ['cp', 'gs://staging.kubernetes-test-214217.appspot.com/Kubernetes test-86404511a8b0.json', '.']  
+    - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - -c
+      - |
+    gcloud auth activate-service-account --key-file Kubernetes test-86404511a8b0.json
+    gcloud app deploy --image-url=gcr.io/kubernetes-test-214217/github-uddhav29-simple-rest-app@sha256:b50538aaf1dc1c70ae28e5f8e245b29fcba69235c11757ec6284c79b85422735
