@@ -9,7 +9,7 @@ steps:
 
 # Connect to GCE server and pull new image
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute', 'ssh', '$_SERVER', '--zone', '$_ZONE', '--command', 'gcloud docker -- pull gcr.io/kubernetes-test-214217/github-uddhav29-simple-rest-app:master']
+  args: ['compute','--project','kubernetes-test-214217', 'ssh','--zone', '$_ZONE','gke-hardcoders-cluster-default-pool-1de0d4dc-7w98', '--command', 'gcloud docker -- pull gcr.io/kubernetes-test-214217/github-uddhav29-simple-rest-app:master']
 
 # Connect to server and stop current container
 - name: 'gcr.io/cloud-builders/gcloud'
