@@ -17,7 +17,7 @@ public class UserController {
 	public String getUserName(@RequestParam(name="name")String name) {
 		
 		//implementation of project
-		return "hello "+name;
+		return "Welcome to GCP "+name;
 	}
 	
 	@RequestMapping(method=RequestMethod.POST ,value="welcome/post")
