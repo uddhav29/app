@@ -17,7 +17,7 @@ public class UserController {
 	public String getUserName(@RequestParam(name="name")String name) {
 		
 		//implementation of project
-		return "Welcome to PGS "+name;
+		return "Welcome to demo, "+name;
 	}
 	
 	@RequestMapping(method=RequestMethod.POST ,value="welcome/post")
