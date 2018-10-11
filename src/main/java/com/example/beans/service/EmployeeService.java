@@ -24,7 +24,7 @@ public class EmployeeService {
 	private Map getListOfEmployee(){
 		
 		JSONParser jsonParser = new JSONParser();
-		 try (FileReader reader = new FileReader("input.json"))
+		 try (FileReader reader = new FileReader("src/main/resources/input.json"))
 	        {
 	            //Read JSON file
 	            Object obj = jsonParser.parse(reader);
@@ -54,8 +54,6 @@ public class EmployeeService {
 	        //Get employee object within list
 	        JSONObject employeeObject = (JSONObject) employee.get("employee");
 	        Employee emp = new Employee((long)employeeObject.get("taxId"),(String) employeeObject.get("name"), (String) employeeObject.get("role") , (String) employeeObject.get("contactNumber") , (String) employeeObject.get("address") , (String)employeeObject.get("earning"));
-	        System.out.println((String)employeeObject.get("earning"));
-	        System.out.println(emp);
 	        employees.put(emp.getTaxId(),emp);
 	   }
 	public Employee getEmployee(long id) {
