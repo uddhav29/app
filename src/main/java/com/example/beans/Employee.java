@@ -19,16 +19,7 @@ public Employee(long taxId, String name, String role, String contactNumber, Stri
 		this.address = address;
 		this.amount = amount;
 	}
-/*	public Employee(long taxId, String name, String role, String contactNumber, String address, String amount) {
-		super();
-		this.taxId = taxId;
-		this.name = name;
-		this.role = role;
-		this.contactNumber = contactNumber;
-		this.address = address;
-		this.amount=amount;
-	}
-	*/
+
 	public long getTaxId() {
 		return taxId;
 	}
@@ -61,12 +52,12 @@ public Employee(long taxId, String name, String role, String contactNumber, Stri
 	}
 	
 	
-	public String getAmount() {
+/*	public String getAmount() {
 		return amount;
 	}
 	public void setAmount(String amount) {
 		this.amount = amount;
-	}
+	}*/
 	@Override
 	public String toString() {
 		return "Employee [taxId=" + taxId + ", name=" + name + ", role=" + role + ", contactNumber=" + contactNumber
