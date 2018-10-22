@@ -52,12 +52,12 @@ public Employee(long taxId, String name, String role, String contactNumber, Stri
 	}
 	
 	
-/*	public String getAmount() {
+	public String getAmount() {
 		return amount;
 	}
 	public void setAmount(String amount) {
 		this.amount = amount;
-	}*/
+	}
 	@Override
 	public String toString() {
 		return "Employee [taxId=" + taxId + ", name=" + name + ", role=" + role + ", contactNumber=" + contactNumber
