@@ -51,16 +51,16 @@ public Employee(long taxId, String name, String role, String contactNumber, Stri
 		this.address = address;
 	}
 	
-	
+	/*
 	public String getAmount() {
 		return amount;
 	}
 	public void setAmount(String amount) {
 		this.amount = amount;
-	}
+	}*/
 	@Override
 	public String toString() {
-		return "Employee [taxIdis=" + taxId + ", name=" + name + ", role=" + role + ", contactNumber=" + contactNumber
+		return "Employee [taxId is now=" + taxId + ", name=" + name + ", role=" + role + ", contactNumber=" + contactNumber
 				+ ", address=" + address + ", amount=" + amount + "]";
 	}
 	
