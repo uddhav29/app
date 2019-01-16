@@ -1,7 +1,11 @@
 package com.example.beans;
 
-public class User {
+import javax.validation.constraints.NotBlank;
 
+import com.example.validation.Name;
+
+public class User {
+	@Name(value="a")
 	private String userName;
 	private String message;
 	public String getUserName() {
